@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: whitesmoke;
+        }
+        #form{
+            position: fixed;left: 30vw;top:10vh;height: fit-content;border: none;border-radius: 1.5%;
+            width: 40vw;display: flex;flex-direction: column;box-shadow: 5px 5px 5px lightgray;text-align: center;font-size: calc(2vh);color:darkgray;
+        }
+        #form>textarea
+        {
+            height: 20vh;width: 80%;margin-left: 10%;border: none;resize: none;
+            margin-top: 2vh;
+        }
+        #form>button
+        {
+            background-color: lightseagreen;color: whitesmoke;font-size: calc(2vh);border-radius: 3%;box-shadow: 5px 5px 5px lightseagreen;
+            width: 40%;margin-left: 30%;outline:lightseagreen;margin-top:30px;border: none;margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="form" method="post" action="{{ url_for('analyze') }}">
+    Enter your phrase down below
+
+<textarea name="phrase"></textarea>
+    <button>Send</button>
+</form>
+</body>
+</html>

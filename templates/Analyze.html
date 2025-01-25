@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pie Chart with CSS</title>
+  <style>
+       body{
+         background-color: whitesmoke;
+
+        }
+    .pie-chart {
+      width:600px;
+      height:600px;
+      border-radius: 50%;
+
+      background: conic-gradient(
+       orangered 0% {{ neg }}%,
+       lightgray {{ neg }}% {{ neu }}%,
+       lightgreen {{ neu }}% {{ pos }}%
+      );
+          ;justify-self: center
+
+
+
+    }
+   #distribution
+   {
+       float: right;margin-right: 15vw;margin-top:120px;
+       height: fit-content;width: fit-content;font-size: calc(3vh);
+   }
+  #desc_box
+  {
+      width: 15vw;
+      height: fit-content;
+
+      margin-top: 50px;
+
+      margin-right: 5vw;
+      box-shadow: 5px 5px 5px lightgray;text-align: center;
+      float: right;
+      font-size: calc(2vh);
+
+  }
+  #desc_box>div
+  {
+      float: right;height:60px;width:60px;margin-right:25px;margin-top: 10px;margin-bottom: 10px;
+      font-size: calc(2vh);text-align: center;
+  }
+  #message_box
+  {
+      height:fit-content;width:30vw;color: whitesmoke;
+      background-color: whitesmoke;display: flex;flex-direction: column;
+      position: fixed;left: 35vw;top:25vh;border-radius: 2%;box-shadow: 15px 15px 15px lightgray;
+      transition:transform 0.5s ease;
+
+  }
+  #message_box>div#head
+  {
+       width: 100%;background-color:darkslategrey;height:fit-content;font-size:calc(3vh);text-align: center;
+      position: relative;
+  }
+  #message_box>div#body
+  {
+      width: 100%;height:fit-content;background-color:whitesmoke;font-size:calc(4vh);text-align: center;color: darkgray;
+      justify-content: center;
+  }
+  #message_box>div#head>img
+  {
+      position: absolute;height:3vh;width:1.5vw;top:0;left:0;
+  }
+
+  #head_sec
+  {
+      width: 100vw;height:fit-content;font-size: 50px;background-color:darkslategrey;color: whitesmoke;
+      text-align: center;color: whitesmoke;
+  }
+
+  </style>
+</head>
+<body>
+<header id="head_sec">Analysis Result</header>
+<div id="message_box">
+    <div id="head">Result
+    <img src="/static/imgs/rejected.png" onclick="close_message_box()">
+    </div>
+    <div id="body">
+      After the analysis your phrase was classified as:{{ cluster }}
+    </div>
+</div>
+
+
+<div id="desc_box">
+    Guide
+    <br>
+    <div>
+     Negative
+        <div style="height: 80%;width:80%;background-color:orangered;margin-left: 10%">
+        </div>
+    </div>
+      <div>
+
+          Positive
+        <div style="height: 80%;width:80%;background-color:lightgreen;margin-left: 10%">
+        </div>
+      </div>
+     <div>
+          Neutral
+        <div style="height: 80%;width:80%;background-color:lightgray;margin-left: 10%">
+        </div>
+      </div>
+ <br>
+</div>
+
+
+
+    <div id="distribution">
+        Polarity Distribution
+  <div class="pie-chart" id="pie-chart">
+
+  </div>
+        </div>
+<script>
+    const message_box=document.getElementById('message_box');
+    function close_message_box()
+    {
+        message_box.style.transform='scale(0)';
+    }
+</script>
+</body>
+</html>
